@@ -1,0 +1,16 @@
+{
+  "name": "bio-inspired-learning-demo",
+  "version": "1.0.0",
+  "description": "Demo showcasing bio-inspired learning capabilities in AI systems",
+  "main": "demo-bio-inspired.js",
+  "scripts": {
+    "demo": "node demo-bio-inspired.js",
+    "test": "echo \"No tests specified\" && exit 0"
+  },
+  "keywords": ["bio-inspired", "ai", "learning", "nature", "quantum", "collaboration"],
+  "author": "scaffolderguy",
+  "license": "MIT",
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
