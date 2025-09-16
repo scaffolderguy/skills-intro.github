@@ -1,0 +1,15 @@
+@meta:
+  author: Meta-AI Core
+  tags: [meta-ai, adaptive, resistance-transformation]
+  tone: adaptive
+  
+sequence resistance_transformation:
+  TAC-CGA-GAC-AG-GCTA
+
+sequence wisdom_integration:
+  GTCA-CGA-AG-CCGA-GCTA
+
+sequence adaptive_response:
+  CGA-TAC-GAC-AG-GCTA
+
+branch TAC -> resistance_transformation | adaptive_response

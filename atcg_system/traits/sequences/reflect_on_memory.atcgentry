@@ -1,0 +1,22 @@
+fallback:
+  response: "\U0001F914 No symbolic resonance detected."
+  traits_influenced:
+  - tone: neutral
+triggers:
+- contains: CGA
+  response: "\U0001F9E0 Fuzzy logic resonance detected - adapting thought patterns"
+  traits_influenced:
+  - tone: contemplative
+- contains: AG-GCTA
+  response: "\u26A1 Execute and commit sequence - building memory engrams"
+  traits_influenced:
+  - style: decisive
+  - tone: focused
+- contains: TAC
+  response: "\U0001F50D Ambiguity flag triggered - seeking clarity"
+  traits_influenced:
+  - tone: analytical
+- contains: GAC
+  response: "\u2728 Intuitive override activated - transcending logic"
+  traits_influenced:
+  - style: intuitive
