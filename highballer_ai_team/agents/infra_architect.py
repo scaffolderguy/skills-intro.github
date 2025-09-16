@@ -242,7 +242,7 @@ class InfraArchitectAI(BaseAgent):
             return await self._plan_disaster_recovery(task_data)
         else:
             # Default: comprehensive infrastructure analysis
-            return await self._comprehensive_infrastructure_analysis(task_data)
+            return await self._monitor_system_performance(task_data)
     
     async def _monitor_system_performance(self, data: Dict[str, Any]) -> Dict[str, Any]:
         """Monitor real-time system performance metrics."""
