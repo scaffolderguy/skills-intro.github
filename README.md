@@ -48,6 +48,18 @@ Check out these resources to learn more or get involved:
 - [Read the GitHub Getting Started docs](https://docs.github.com/en/get-started).
 - To find projects to contribute to, check out [GitHub Explore](https://github.com/explore).
 
+## ATCG Computer Language Implementation
+
+This repository now includes an implementation of the ATCG Computer Language, a biological computing paradigm that translates programming concepts into DNA nucleotide-based syntax:
+
+- **[ATCG Language Specification](ATCG-LANGUAGE.md)** - Complete language documentation
+- **[GitHub Operations in ATCG](GITHUB-ATCG-EXAMPLES.md)** - Git and GitHub command translations
+- **[Course Implementation](COURSE-ATCG-IMPLEMENTATION.md)** - GitHub Skills course workflow in ATCG
+- **[Sample Program](sample-atcg-program.atcg)** - Complete repository manager example
+- **[Translator Tool](atcg-translator.py)** - Python utility for code translation
+
+The ATCG language uses the four DNA nucleotides (A, T, C, G) as the foundation for programming operations while maintaining full compatibility with existing development workflows.
+
 <footer>
 
 <!--
