@@ -1,0 +1,24 @@
+{
+  "name": "skills-intro-github-bio-inspired",
+  "version": "1.0.0",
+  "description": "Bio-Inspired Learning Module - Nature's 3.5 billion years of R&D in AI form",
+  "main": "intelligence/bio-inspired-learning.js",
+  "scripts": {
+    "test": "node tests/bio-inspired/bio-inspired-tests.js",
+    "test:bio": "node tests/bio-inspired/bio-inspired-tests.js"
+  },
+  "keywords": [
+    "ai",
+    "bio-inspired",
+    "machine-learning",
+    "nature",
+    "quantum-coherence",
+    "symbiotic-evolution",
+    "network-intelligence"
+  ],
+  "author": "Bio-Inspired AI Systems",
+  "license": "MIT",
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
