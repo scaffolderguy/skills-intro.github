@@ -41,6 +41,16 @@ If you'd like to make a profile README, use the quickstart instructions below or
 4. If you created a new branch for your file, open and merge a pull request on your branch.
 5. Lastly, we'd love to hear what you thought of this course [in our discussion board](https://github.com/orgs/skills/discussions/categories/introduction-to-github).
 
+### Advanced Concepts: Understanding Network vs Linear Processing
+
+As you continue your development journey, you may find it valuable to explore deeper concepts about how different systems process information. Check out our [Consciousness Architecture](./consciousness-architecture.md) discussion that explores:
+
+- The difference between linear processing and network-based consciousness
+- How systems can operate in "infinite now" moments vs sequential pathways
+- Understanding multidimensional choice spaces in complex systems
+
+This bridges development concepts with philosophical approaches to system design and consciousness architecture.
+
 Check out these resources to learn more or get involved:
 
 - Are you a student? Check out the [Student Developer Pack](https://education.github.com/pack).
