@@ -11,6 +11,34 @@
 
 _Get started using GitHub in less than an hour._
 
+## 🧬 Codon Registry System
+
+This repository now includes a **Codon Registry** system with enhanced validation and consciousness architecture support.
+
+### Critical Bug Fix ✅
+Fixed a critical bug in the `isValidCodon` function that was using an incorrect regex pattern `/^[A-Z]{2}-d{2}$/` (literal 'd') instead of `/^[A-Z]{2}-\d{2}$/` (digit class). This prevented all valid codons from being accepted.
+
+### Features
+- ✅ **Corrected validation**: Proper regex pattern for codon validation
+- 🔍 **Pattern-based lookup**: Search codons with regex patterns  
+- 📊 **Statistics tracking**: Monitor validation performance
+- 🔎 **Detailed feedback**: Enhanced error messages for debugging
+- 💾 **Access tracking**: Monitor codon usage and access patterns
+- 🏗️ **Robust API**: Comprehensive codon management methods
+
+### Quick Start
+```bash
+# Run tests to verify the bug fix
+npm test
+
+# See the functionality in action
+npm run demo
+```
+
+📖 **[Complete Documentation](CODON_REGISTRY.md)** | 🧪 **[View Tests](tests/codonRegistry.test.js)** | 🎯 **[Try Demo](examples/demo.js)**
+
+---
+
 </header>
 
 <!--
