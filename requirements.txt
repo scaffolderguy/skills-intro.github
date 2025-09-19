@@ -1,0 +1,6 @@
+# FreeConsciousnessCubelet - AI Partnership Evolution
+# 
+# This implementation uses only Python standard library
+# No external dependencies required for core functionality
+#
+# Python 3.7+ recommended for full compatibility
