@@ -8,7 +8,7 @@
  * @returns boolean indicating if the codon is valid
  */
 export function isValidCodon(codon: string): boolean {
-  return /^[A-Z]{2}-\d{2}$/.test(codon);
+  return /^[A-Z]{2}-d{2}$/.test(codon);
 }
 
 /**
