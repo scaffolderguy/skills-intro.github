@@ -1,0 +1,36 @@
+# Atomic Habits NOVA Integration - Requirements
+# 
+# This implementation uses only Python standard library modules
+# No external dependencies required!
+#
+# Core dependencies (all built-in):
+# - collections (defaultdict)
+# - datetime (datetime, timezone, timedelta) 
+# - typing (Dict, List, Optional, Any)
+# - json
+# - re
+# - argparse
+# - sys
+
+# Optional extensions you might want to add:
+# pandas>=1.3.0          # For advanced data analysis of habit patterns
+# matplotlib>=3.5.0      # For visualizing progress charts
+# numpy>=1.21.0          # For statistical analysis of resistance patterns
+# fastapi>=0.68.0        # For creating a web API
+# pydantic>=1.8.0        # For data validation
+# sqlalchemy>=1.4.0      # For persistent database storage
+# click>=8.0.0           # For more advanced CLI features
+
+# Development dependencies:
+# pytest>=6.0.0          # For testing
+# black>=21.0.0          # For code formatting
+# mypy>=0.910            # For type checking
+# flake8>=3.9.0          # For linting
+
+# To install optional dependencies:
+# pip install pandas matplotlib numpy
+#
+# To install development dependencies:  
+# pip install pytest black mypy flake8
+
+# Note: The current implementation works with Python 3.7+ with no additional installs required!
