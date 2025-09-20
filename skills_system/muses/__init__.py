@@ -1,0 +1,1 @@
+# Muses package for motivational guide archetypes

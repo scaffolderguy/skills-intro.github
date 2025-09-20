@@ -1,0 +1,1 @@
+# Core package for fundamental skill system components
