@@ -1,0 +1,24 @@
+{
+  "name": "mechanical-engineering-ai",
+  "version": "1.0.0",
+  "description": "Mechanical Engineering AI System for component recognition, 3D modeling, and system reconstruction",
+  "keywords": ["mechanical-engineering", "ai", "3d-modeling", "component-recognition", "cad"],
+  "author": "Mechanical Engineering AI Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/scaffolderguy/skills-intro.github"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "scripts": {
+    "start": "python -m flask --app src/web_interface/app run",
+    "test": "pytest tests/",
+    "dev": "python -m flask --app src/web_interface/app run --debug",
+    "build-docs": "sphinx-build -b html docs/source docs/build/html"
+  },
+  "devDependencies": {
+    "concurrently": "^7.0.0"
+  }
+}

@@ -1,0 +1,30 @@
+# Core dependencies for Mechanical Engineering AI System
+numpy>=1.21.0
+opencv-python>=4.5.0
+tensorflow>=2.8.0
+scikit-learn>=1.0.0
+matplotlib>=3.5.0
+pillow>=8.3.0
+flask>=2.0.0
+flask-cors>=3.0.10
+
+# 3D modeling and CAD
+open3d>=0.13.0
+trimesh>=3.12.0
+scipy>=1.7.0
+
+# Computer vision and image processing
+scikit-image>=0.18.0
+imageio>=2.9.0
+
+# Data handling
+pandas>=1.3.0
+pydantic>=1.8.0
+
+# Testing
+pytest>=6.2.0
+pytest-cov>=2.12.0
+
+# Documentation
+sphinx>=4.0.0
+sphinx-rtd-theme>=1.0.0
