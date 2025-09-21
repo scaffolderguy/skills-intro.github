@@ -47,6 +47,7 @@ Check out these resources to learn more or get involved:
 - [Take another GitHub Skills course](https://github.com/skills).
 - [Read the GitHub Getting Started docs](https://docs.github.com/en/get-started).
 - To find projects to contribute to, check out [GitHub Explore](https://github.com/explore).
+- **New**: Learn about [The Future of Hiring: AI-Driven Recruitment](AI_RECRUITMENT_VISION.md) - A vision for transforming recruitment with AI interviews.
 
 <footer>
 
