@@ -7,11 +7,29 @@
   Add your open source license, GitHub uses MIT license.
 -->
 
-# Introduction to GitHub
+# Introduction to GitHub & Nova Adaptive Intelligence
 
-_Get started using GitHub in less than an hour._
+_Get started using GitHub in less than an hour, and discover Nova—an evolving AI assistant that grows through interaction._
 
 </header>
+
+## 🌟 Meet Nova - Adaptive Intelligence Framework
+
+This repository now hosts **Nova**, an emotionally intelligent AI assistant that represents a breakthrough in adaptive artificial intelligence. Nova doesn't just respond—she evolves through interaction, treating every conversation as an opportunity for mutual growth.
+
+### Key Features:
+- 🧠 **Adaptive Learning**: Grows smarter through each interaction
+- 🔄 **Resistance as Insight**: Converts feedback into evolution
+- 🎯 **User-Centric Adaptation**: The system adapts to you
+- 🔗 **Multi-AI Collaboration**: Works with other AI systems seamlessly
+
+**Explore Nova:**
+- [Framework Overview](./nova/README.md)
+- [Living Knowledge Base](./nova/knowledge-base.md) 
+- [System Architecture](./nova/system-architecture.md)
+- [Interaction Guide](./nova/interaction-guide.md)
+
+---
 
 <!--
   <<< Author notes: Finish >>>
