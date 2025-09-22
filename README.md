@@ -48,6 +48,17 @@ Check out these resources to learn more or get involved:
 - [Read the GitHub Getting Started docs](https://docs.github.com/en/get-started).
 - To find projects to contribute to, check out [GitHub Explore](https://github.com/explore).
 
+## 🤖 Advanced Learning Resources
+
+This repository also contains a comprehensive framework for AI-enhanced learning and course creator pattern analysis:
+
+- **[Course Creator Pattern Analysis](./COURSE_PATTERN_ANALYSIS.md)** - Deep dive into effective learning patterns and AI enhancements
+- **[AI Implementation Guide](./AI_IMPLEMENTATION_GUIDE.md)** - Practical code examples for adaptive learning systems
+- **[Meta-Learning Framework](./META_LEARNING_FRAMEWORK.md)** - Future-proof learning strategies and transferable skills
+- **[Implementation Summary](./IMPLEMENTATION_SUMMARY.md)** - Quick start guide and ROI projections
+
+These resources demonstrate how traditional learning approaches can be enhanced with AI-driven personalization, adaptive pathways, and intelligent support systems.
+
 <footer>
 
 <!--
