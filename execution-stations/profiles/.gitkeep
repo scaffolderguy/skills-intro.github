@@ -1,0 +1,18 @@
+# User profiles directory
+
+This directory contains generated user profiles for execution stations. 
+
+Each user profile includes:
+- Cognitive style configuration
+- Resource requirements
+- Tool preferences
+- Kubernetes manifests
+
+Example usage:
+```bash
+make generate-profile USER_ID=alice COGNITIVE_STYLE=visual_systemic
+```
+
+This will create:
+- `alice-profile.yaml` - Complete user profile
+- `alice/` - Directory with Kubernetes manifests

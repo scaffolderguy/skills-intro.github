@@ -35,3 +35,22 @@
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# Execution Stations #
+######################
+execution-stations/profiles/*
+!execution-stations/profiles/.gitkeep
+execution-stations/terraform/.terraform/
+execution-stations/terraform/tfplan-*
+execution-stations/terraform/*.tfstate*
+execution-stations/backups/
+execution-stations/docs/generated/
+*.tar.gz.b64
+
+# Python #
+##########
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+.env
