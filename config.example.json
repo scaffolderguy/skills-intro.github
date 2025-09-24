@@ -1,0 +1,33 @@
+{
+  "bellhop": {
+    "router": {
+      "log_level": "INFO",
+      "clipboard_monitor_interval": 300,
+      "agent_health_check_interval": 600
+    },
+    "clipboard_digest": {
+      "digest_file": "clipboard_digest.json",
+      "auto_log_notion": true,
+      "max_content_length": 2000
+    },
+    "agent_scanner": {
+      "model_name": "all-MiniLM-L6-v2",
+      "trust_score_weights": {
+        "resonance": 0.7,
+        "tool_bonus": 0.05,
+        "system_message_bonus": 0.1
+      },
+      "max_resonance_history": 10
+    }
+  },
+  "notion": {
+    "token": "YOUR_NOTION_TOKEN_HERE",
+    "database_id": "YOUR_NOTION_DATABASE_ID_HERE"
+  },
+  "autogen": {
+    "model_config": {
+      "model": "gpt-4",
+      "api_key": "YOUR_OPENAI_API_KEY_HERE"
+    }
+  }
+}
