@@ -1,0 +1,19 @@
+{
+  "name": "skills-intro-github-codon-registry",
+  "version": "1.0.0",
+  "description": "GitHub Skills introduction with Codon Registry system - includes critical bug fix for isValidCodon function",
+  "main": "src/codonRegistry.js",
+  "scripts": {
+    "test": "node tests/codonRegistry.test.js",
+    "demo": "node examples/demo.js"
+  },
+  "keywords": ["github", "skills", "codon", "registry", "validation", "consciousness-architecture"],
+  "author": "GitHub Skills",
+  "license": "MIT",
+  "files": [
+    "src/",
+    "tests/",
+    "examples/",
+    "README.md"
+  ]
+}
