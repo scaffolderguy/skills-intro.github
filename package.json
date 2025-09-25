@@ -1,0 +1,17 @@
+{
+  "name": "quantum-superorganism-skills",
+  "version": "1.0.0",
+  "description": "Digital superorganism architecture inspired by eusocial colonies",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "test": "node --test test/*.js"
+  },
+  "keywords": ["superorganism", "ai", "quantum", "collective-intelligence", "eusocial"],
+  "author": "Quantum Superorganism Team",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
