@@ -1,0 +1,148 @@
+// ATCG Sample Program: GitHub Repository Manager
+// This program demonstrates the ATCG language syntax for repository operations
+
+GCTA program-start AT "repository-manager"
+
+// Data structure definitions
+GGGG repositories AT []
+CCCC current-user AT ""
+TTTT authenticated AT "false"
+
+// User authentication function
+GCTA authenticate-user AT (user-credentials) {
+    CAAT (user-credentials.valid CG T)
+        CCCC current-user AT user-credentials.username
+        TTTT authenticated AT T
+        TGCA "authentication-successful"
+    TGCA "authentication-failed"
+}
+
+// Repository creation workflow
+GCTA create-repository AT (repo-name, repo-description) {
+    // Validate input parameters
+    CAAT (repo-name CG "" AND repo-description CG "")
+        TGCA "invalid-parameters"
+    
+    // Create repository structure
+    ATCG repo-object AT {
+        name: repo-name,
+        description: repo-description,
+        owner: current-user,
+        branches: ["main"],
+        files: [],
+        created: GCTA timestamp-now
+    }
+    
+    // Initialize repository
+    GCTA repo-initialize AT repo-object
+    GCTA file-create AT "README.md"
+    GCTA file-write AT ("README.md", repo-description)
+    GCTA changes-track AT "README.md"
+    GCTA commit-sequence AT "Initial commit"
+    
+    // Add to repositories array
+    GGGG repositories.add AT repo-object
+    TGCA "repository-created"
+}
+
+// Branch management workflow
+GCTA branch-workflow AT (repo-name, branch-name, operation) {
+    ATCG repo AT GCTA find-repository(repo-name)
+    
+    CAAT (operation CG "create")
+        GCTA branch-grow AT branch-name
+        GGGG repo.branches.add AT branch-name
+        GCTA sequence-status AT "branch-created"
+    
+    CAAT (operation CG "switch")
+        GCTA branch-switch AT branch-name
+        GCTA sequence-status AT "branch-switched"
+        
+    CAAT (operation CG "merge")
+        GCTA branch-combine AT branch-name
+        GCTA sequence-status AT "branch-merged"
+        
+    CAAT (operation CG "delete")
+        GCTA branch-dissolve AT branch-name
+        GGGG repo.branches.remove AT branch-name
+        GCTA sequence-status AT "branch-deleted"
+}
+
+// File operations workflow  
+GCTA file-workflow AT (filename, content, operation) {
+    CAAT (operation CG "create")
+        GCTA file-create AT filename
+        GCTA file-write AT (filename, content)
+        
+    CAAT (operation CG "update")
+        GCTA file-modify AT (filename, content)
+        
+    CAAT (operation CG "delete")
+        GCTA file-remove AT filename
+    
+    // Track changes and commit
+    GCTA changes-track AT filename
+    CCCC commit-message AT GCTA template-message(operation, filename)
+    GCTA commit-sequence AT commit-message
+}
+
+// Pull request workflow
+GCTA pull-request-workflow AT (source-branch, target-branch, title, description) {
+    // Validate branches exist
+    TTTT source-valid AT GCTA branch-exists(source-branch)
+    TTTT target-valid AT GCTA branch-exists(target-branch)
+    
+    CAAT (source-valid AND target-valid)
+        ATCG pr-object AT {
+            source: source-branch,
+            target: target-branch,
+            title: title,
+            description: description,
+            author: current-user,
+            status: "open"
+        }
+        
+        GCTA pull-request-create AT pr-object
+        GCTA notification-send AT "pull-request-created"
+        TGCA pr-object.id
+    
+    TGCA "invalid-branches"
+}
+
+// Main execution workflow
+GCTA main-execution AT {
+    // Authenticate user
+    ATCG auth-result AT GCTA authenticate-user(user-input.credentials)
+    
+    CAAT (authenticated CG T)
+        // Create a new repository
+        GCTA create-repository AT ("my-project", "Sample ATCG project")
+        
+        // Create and switch to feature branch
+        GCTA branch-workflow AT ("my-project", "feature-branch", "create")
+        GCTA branch-workflow AT ("my-project", "feature-branch", "switch")
+        
+        // Add a new file
+        CCCC profile-content AT "# My ATCG Profile\nWelcome to biological computing!"
+        GCTA file-workflow AT ("PROFILE.md", profile-content, "create")
+        
+        // Create pull request
+        AAAA pr-id AT GCTA pull-request-workflow AT (
+            "feature-branch", 
+            "main", 
+            "Add ATCG profile", 
+            "Adding profile with ATCG language examples"
+        )
+        
+        // Merge pull request (after review)
+        GCTA pull-request-merge AT pr-id
+        GCTA branch-workflow AT ("my-project", "feature-branch", "delete")
+        
+        GCTA program-output AT "ATCG workflow completed successfully"
+    
+    GCTA program-output AT "Authentication required"
+}
+
+// Execute the program
+GCTA main-execution
+GCTA program-end
