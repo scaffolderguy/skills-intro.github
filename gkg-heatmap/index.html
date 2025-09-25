@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GKG Heatmap Visualizer - GDELT Global Knowledge Graph</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>GKG Heatmap Visualizer</h1>
+            <p class="subtitle">Global Knowledge Graph Interactive Heatmap Generator</p>
+            <p class="description">
+                Creates an interactive heatmap that displays in a browser window, along with a CSV file for 
+                importing into GIS software. Makes use of the heatmap.js library and Google Maps to visualize 
+                spatial patterns from the GDELT Global Knowledge Graph.
+            </p>
+        </header>
+
+        <main>
+            <form id="gkgForm" action="cgi-bin/gkg_processor.pl" method="post" class="gkg-form">
+                <!-- Email Section -->
+                <section class="form-section">
+                    <h2>Your Email Address</h2>
+                    <p class="section-description">
+                        Creating these results can take several minutes depending on server demand - 
+                        please provide the email address that the results should be sent to.
+                    </p>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required 
+                               placeholder="your.email@example.com" class="form-control">
+                    </div>
+                </section>
+
+                <!-- Date Range Section -->
+                <section class="form-section">
+                    <h2>Date Range</h2>
+                    <p class="section-description">
+                        Limit the time period of analysis. The earliest allowable date for the Global Knowledge 
+                        graph is currently April 1, 2013 and the latest date allowed is the current day.
+                    </p>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="startDate">Start Date</label>
+                            <input type="date" id="startDate" name="startDate" 
+                                   min="2013-04-01" max="" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="endDate">End Date</label>
+                            <input type="date" id="endDate" name="endDate" 
+                                   min="2013-04-01" max="" class="form-control">
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Keyword Search Section -->
+                <section class="form-section">
+                    <h2>Keyword Search Criteria</h2>
+                    <p class="section-description">
+                        You must specify a set of keywords that will be used to search the Global Knowledge Graph 
+                        for matching records. Separate multiple terms with commas. The three fields are boolean AND'd 
+                        together. Fields are not case sensitive.
+                    </p>
+                    <p class="example">
+                        <strong>Example:</strong> To search for discussion of Food or Water Security in Nigeria and 
+                        exclude mentions of US President Obama or Edward Snowden, enter "Nigeria" in the first field, 
+                        "WATER_SECURITY, FOOD_SECURITY" in the second, and "Barack Obama, Edward Snowden" in the third.
+                    </p>
+
+                    <div class="form-group">
+                        <label for="includeAll">Include ALL OF</label>
+                        <input type="text" id="includeAll" name="includeAll" class="form-control"
+                               placeholder="Enter keywords separated by commas">
+                        <small>All GKG fields are searched for these keywords (person/org names, countries, cities, GKG Themes)</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="includeAny">Include AT LEAST ONE OF</label>
+                        <input type="text" id="includeAny" name="includeAny" class="form-control"
+                               placeholder="Enter keywords separated by commas">
+                        <small>Must contain at least one of these terms</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exclude">Must NOT Have ANY OF</label>
+                        <input type="text" id="exclude" name="exclude" class="form-control"
+                               placeholder="Enter keywords separated by commas">
+                        <small>Exclude records containing any of these terms</small>
+                    </div>
+                </section>
+
+                <!-- Location Weighting Section -->
+                <section class="form-section">
+                    <h2>Location Weighting</h2>
+                    <p class="section-description">How should the "weight" of each location be calculated?</p>
+
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" id="weightNamesets" name="weighting" value="namesets" checked>
+                            <label for="weightNamesets">
+                                <strong>Number Namesets</strong>
+                                <span class="radio-description">
+                                    Weights locations towards those that occur in the greatest diversity of contexts, 
+                                    biasing towards the most discussed locations. Relatively immune to sudden massive 
+                                    bursts of coverage and captures broader spatial trends.
+                                </span>
+                            </label>
+                        </div>
+
+                        <div class="radio-option">
+                            <input type="radio" id="weightArticles" name="weighting" value="articles">
+                            <label for="weightArticles">
+                                <strong>Number Articles</strong>
+                                <span class="radio-description">
+                                    Weights based on raw number of articles a location occurs in. Biases towards 
+                                    frequency rather than uniqueness. Can be sensitive to sudden bursts of coverage 
+                                    but yields more nuanced short-term spatial focus.
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Submit Section -->
+                <section class="form-section submit-section">
+                    <button type="submit" class="submit-btn">Generate Heatmap</button>
+                    <p class="submit-note">
+                        Your results will be emailed to you when complete, usually within 10 minutes, 
+                        depending on server load and calculation complexity.
+                    </p>
+                </section>
+            </form>
+
+            <!-- Outputs Information -->
+            <section class="info-section">
+                <h2>Outputs</h2>
+                <p>The following output files will be generated:</p>
+                
+                <div class="output-info">
+                    <div class="output-item">
+                        <h3>Interactive Heatmap Visualization</h3>
+                        <p>
+                            Generates a ready-to-go heatmap visualization using the heatmap.js library that 
+                            displays inside of your browser overlaid onto Google Maps. A horizontal slider 
+                            allows you to interactively adjust the upper cutpoint threshold of the heatmap 
+                            to dynamically "slice" through the data.
+                        </p>
+                    </div>
+
+                    <div class="output-item">
+                        <h3>.CSV File</h3>
+                        <p>
+                            Outputs a .CSV file listing the unique latitude/longitude pairs found across all 
+                            matching GKG records and the number of matching records or articles for each. 
+                            This can be imported into GIS software for more sophisticated visualization or analysis.
+                        </p>
+                        <p class="note">
+                            <strong>Note:</strong> The CSV file also contains an additional column that records 
+                            the average "tone" (ranging +100 for most positive to -100 for most negative) of 
+                            all matching news coverage that mentioned that location. This can be used to create 
+                            "emotional" heatmaps with specialized software.
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>
+                <strong>Acknowledgements:</strong> Makes use of the heatmap.js library and Google Maps API. 
+                Data provided by the GDELT Global Knowledge Graph.
+            </p>
+        </footer>
+    </div>
+
+    <script src="js/form-validation.js"></script>
+</body>
+</html>

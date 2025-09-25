@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GKG Heatmap Visualization - Sample</title>
+    <style>
+        body { 
+            margin: 0; 
+            padding: 0; 
+            font-family: 'Inter', Arial, sans-serif; 
+            background: #f8f9fa;
+        }
+        
+        #map { 
+            height: 70vh; 
+            width: 100%; 
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header h1 {
+            color: #1a365d;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .header p {
+            color: #4a5568;
+            font-size: 1.1rem;
+        }
+        
+        #controls { 
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1rem;
+        }
+        
+        .controls-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            align-items: center;
+        }
+        
+        .control-group { 
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        .control-group label { 
+            font-weight: 600; 
+            color: #2d3748;
+            font-size: 0.9rem;
+        }
+        
+        .slider-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .slider {
+            flex: 1;
+            -webkit-appearance: none;
+            appearance: none;
+            height: 8px;
+            border-radius: 5px;
+            background: #e2e8f0;
+            outline: none;
+        }
+        
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #4299e1;
+            cursor: pointer;
+        }
+        
+        .slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #4299e1;
+            cursor: pointer;
+            border: none;
+        }
+        
+        .value-display {
+            background: #edf2f7;
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-weight: 600;
+            color: #2d3748;
+            min-width: 3rem;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+        
+        .info-panel {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-top: 1rem;
+        }
+        
+        .info-panel h3 {
+            color: #2d3748;
+            margin-bottom: 1rem;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+        
+        .stat-item {
+            padding: 1rem;
+            background: #f7fafc;
+            border-radius: 6px;
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #4299e1;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: #718096;
+            margin-top: 0.25rem;
+        }
+
+        .demo-notice {
+            background: #fef5e7;
+            border: 1px solid #f6ad55;
+            color: #744210;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            #map {
+                height: 60vh;
+            }
+            
+            .controls-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🌍 GKG Heatmap Visualization</h1>
+            <p>Interactive Global Knowledge Graph Spatial Analysis</p>
+        </div>
+
+        <div class="demo-notice">
+            <strong>Demo Mode:</strong> This is a sample visualization showing simulated data. 
+            In the full implementation, this would display actual GDELT GKG data based on your search criteria.
+        </div>
+        
+        <div id="controls">
+            <div class="controls-grid">
+                <div class="control-group">
+                    <label for="intensity-slider">Heatmap Intensity</label>
+                    <div class="slider-container">
+                        <input type="range" id="intensity-slider" class="slider" min="0" max="100" value="50">
+                        <div class="value-display" id="intensity-value">50%</div>
+                    </div>
+                </div>
+                
+                <div class="control-group">
+                    <label for="radius-slider">Point Radius</label>
+                    <div class="slider-container">
+                        <input type="range" id="radius-slider" class="slider" min="10" max="100" value="40">
+                        <div class="value-display" id="radius-value">40px</div>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label for="opacity-slider">Map Opacity</label>
+                    <div class="slider-container">
+                        <input type="range" id="opacity-slider" class="slider" min="0" max="100" value="80">
+                        <div class="value-display" id="opacity-value">80%</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="map"></div>
+        
+        <div class="info-panel">
+            <h3>📊 Analysis Summary</h3>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-value" id="total-locations">12</div>
+                    <div class="stat-label">Total Locations</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="total-records">1,847</div>
+                    <div class="stat-label">GKG Records</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="avg-tone">+3.2</div>
+                    <div class="stat-label">Average Tone</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="date-range">30 days</div>
+                    <div class="stat-label">Date Range</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Sample heatmap data (in real implementation, this would come from PERL backend)
+        var heatmapData = [
+            {lat: 40.7128, lng: -74.0060, value: 245}, // New York
+            {lat: 51.5074, lng: -0.1278, value: 198},  // London
+            {lat: 35.6762, lng: 139.6503, value: 167}, // Tokyo
+            {lat: 48.8566, lng: 2.3522, value: 134},   // Paris
+            {lat: 52.5200, lng: 13.4050, value: 89},   // Berlin
+            {lat: 37.7749, lng: -122.4194, value: 156}, // San Francisco
+            {lat: 55.7558, lng: 37.6176, value: 201},  // Moscow
+            {lat: 39.9042, lng: 116.4074, value: 234}, // Beijing
+            {lat: 28.6139, lng: 77.2090, value: 178},  // New Delhi
+            {lat: -33.8688, lng: 151.2093, value: 87}, // Sydney
+            {lat: 34.0522, lng: -118.2437, value: 123}, // Los Angeles
+            {lat: 43.6532, lng: -79.3832, value: 98}   // Toronto
+        ];
+
+        // Simple canvas-based heatmap implementation (demo version)
+        function initHeatmap() {
+            const mapContainer = document.getElementById('map');
+            
+            // Create canvas
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            
+            // Set canvas size
+            const resizeCanvas = () => {
+                canvas.width = mapContainer.offsetWidth;
+                canvas.height = mapContainer.offsetHeight;
+                drawHeatmap();
+            };
+            
+            canvas.style.width = '100%';
+            canvas.style.height = '100%';
+            canvas.style.background = '#2d3748';
+            canvas.style.borderRadius = '8px';
+            
+            mapContainer.appendChild(canvas);
+            
+            let intensity = 50;
+            let radius = 40;
+            let opacity = 80;
+            
+            function drawHeatmap() {
+                // Clear canvas
+                ctx.fillStyle = '#2d3748';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                
+                // Draw world map outline (simplified)
+                drawWorldOutline(ctx);
+                
+                // Draw heatmap points
+                heatmapData.forEach(point => {
+                    // Convert lat/lng to canvas coordinates (simplified projection)
+                    const x = ((point.lng + 180) / 360) * canvas.width;
+                    const y = ((90 - point.lat) / 180) * canvas.height;
+                    
+                    // Create radial gradient for heatmap point
+                    const gradient = ctx.createRadialGradient(x, y, 0, x, y, radius);
+                    const alpha = (opacity / 100) * (intensity / 100) * (point.value / 250);
+                    
+                    gradient.addColorStop(0, `rgba(255, 100, 100, ${alpha})`);
+                    gradient.addColorStop(0.4, `rgba(255, 150, 50, ${alpha * 0.8})`);
+                    gradient.addColorStop(0.7, `rgba(255, 200, 0, ${alpha * 0.6})`);
+                    gradient.addColorStop(1, `rgba(255, 255, 0, 0)`);
+                    
+                    ctx.fillStyle = gradient;
+                    ctx.fillRect(x - radius, y - radius, radius * 2, radius * 2);
+                    
+                    // Draw location marker
+                    ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+                    ctx.beginPath();
+                    ctx.arc(x, y, 2, 0, 2 * Math.PI);
+                    ctx.fill();
+                });
+            }
+            
+            function drawWorldOutline(ctx) {
+                // Simplified world map outline
+                ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)';
+                ctx.lineWidth = 1;
+                ctx.setLineDash([2, 2]);
+                
+                // Draw simplified continent outlines
+                const continents = [
+                    // North America (simplified)
+                    {lat: 60, lng: -100, width: 80, height: 50},
+                    // Europe
+                    {lat: 60, lng: 10, width: 40, height: 30},
+                    // Asia
+                    {lat: 50, lng: 100, width: 100, height: 60},
+                    // Africa
+                    {lat: 0, lng: 20, width: 50, height: 70},
+                    // South America
+                    {lat: -10, lng: -60, width: 40, height: 70},
+                    // Australia
+                    {lat: -25, lng: 135, width: 30, height: 20}
+                ];
+                
+                continents.forEach(continent => {
+                    const x = ((continent.lng + 180) / 360) * canvas.width;
+                    const y = ((90 - continent.lat) / 180) * canvas.height;
+                    const w = (continent.width / 360) * canvas.width;
+                    const h = (continent.height / 180) * canvas.height;
+                    
+                    ctx.strokeRect(x - w/2, y - h/2, w, h);
+                });
+                
+                ctx.setLineDash([]);
+            }
+            
+            // Control handlers
+            document.getElementById('intensity-slider').addEventListener('input', function(e) {
+                intensity = parseInt(e.target.value);
+                document.getElementById('intensity-value').textContent = intensity + '%';
+                drawHeatmap();
+            });
+            
+            document.getElementById('radius-slider').addEventListener('input', function(e) {
+                radius = parseInt(e.target.value);
+                document.getElementById('radius-value').textContent = radius + 'px';
+                drawHeatmap();
+            });
+            
+            document.getElementById('opacity-slider').addEventListener('input', function(e) {
+                opacity = parseInt(e.target.value);
+                document.getElementById('opacity-value').textContent = opacity + '%';
+                drawHeatmap();
+            });
+            
+            // Handle window resize
+            window.addEventListener('resize', resizeCanvas);
+            resizeCanvas();
+        }
+        
+        // Initialize heatmap when page loads
+        document.addEventListener('DOMContentLoaded', initHeatmap);
+    </script>
+</body>
+</html>
