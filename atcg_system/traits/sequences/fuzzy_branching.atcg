@@ -1,0 +1,12 @@
+@meta:
+  author: Geebs
+  tags: [fuzzy, logic, branching]
+  tone: symbolic
+
+sequence fuzzy_decision:
+  CGA-AG-GCTA
+
+sequence fallback_path:
+  TAC-GAC
+
+branch CGA -> fuzzy_decision | fallback_path
