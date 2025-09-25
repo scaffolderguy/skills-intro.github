@@ -1,0 +1,100 @@
+{
+  "atomic_habits_config": {
+    "daily_three_ritual": {
+      "enabled": true,
+      "trigger_time": "09:00",
+      "reminder_interval_hours": 24,
+      "max_outcomes_per_day": 3
+    },
+    "two_minute_rule": {
+      "enabled": true,
+      "default_time_limit": 120,
+      "starter_templates": {
+        "write": "Open document and write one sentence",
+        "research": "Find and bookmark one relevant article",
+        "plan": "List 3 bullet points of what needs to happen",
+        "code": "Create file and write one function signature",
+        "design": "Sketch one rough wireframe on paper",
+        "learn": "Read first paragraph of chosen resource",
+        "email": "Open email and write subject line",
+        "organize": "Pick one small area and sort 5 items",
+        "exercise": "Put on workout clothes",
+        "read": "Read one page",
+        "call": "Look up phone number and dial",
+        "clean": "Set timer for 2 minutes and tidy one surface"
+      }
+    },
+    "habit_stacking": {
+      "enabled": true,
+      "max_stacks_per_trigger": 3,
+      "stack_acceptance_threshold": 0.7,
+      "automatic_suggestions": true
+    },
+    "resistance_bandit": {
+      "enabled": true,
+      "initial_resistance": 0.5,
+      "resistance_reduction_per_win": 0.2,
+      "max_resistance": 1.0,
+      "min_resistance": 0.0,
+      "momentum_decay_days": 7
+    },
+    "environment_cues": {
+      "enabled": true,
+      "context_triggers": {
+        "morning": "Start with your easiest win",
+        "low_energy": "Pick a 2-minute task",
+        "high_energy": "Tackle your most challenging starter",
+        "workspace": "What would make this session successful?",
+        "mobile": "Quick wins while on the go"
+      }
+    },
+    "milestones": {
+      "streak_rewards": {
+        "1": "First step taken! 🎯",
+        "3": "Building momentum! 🚀", 
+        "7": "One week strong! 💪",
+        "14": "Two weeks of consistency! 🔥",
+        "21": "Habit formation in progress! 🌱",
+        "30": "One month of growth! 🌿",
+        "66": "Habit officially formed! 🌳",
+        "100": "Habit mastery achieved! 👑"
+      },
+      "micro_win_celebrations": [
+        "One less decision today! 🎉",
+        "Progress compounds! 📈",
+        "Small win = big momentum! ⚡",
+        "You're building your future self! 🚀",
+        "Excellence is a habit! ⭐"
+      ]
+    },
+    "logging": {
+      "track_habit_loops": true,
+      "track_two_minute_acceptance": true,
+      "track_streak_length": true,
+      "track_stacked_habit_conversion": true,
+      "track_resistance_delta": true,
+      "export_format": "json",
+      "retention_days": 365
+    }
+  },
+  "nova_integration": {
+    "search_enhancement": {
+      "add_habit_suggestions": true,
+      "surface_environment_cues": true,
+      "include_user_stats": true,
+      "prioritize_actionable_results": true
+    },
+    "session_management": {
+      "auto_trigger_daily_three": true,
+      "detect_completion_events": true,
+      "suggest_habit_stacks": true,
+      "track_session_momentum": true
+    },
+    "adaptive_learning": {
+      "learn_user_patterns": true,
+      "adjust_suggestions_based_on_success": true,
+      "personalize_two_minute_starters": true,
+      "optimize_stack_suggestions": true
+    }
+  }
+}
