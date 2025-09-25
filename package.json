@@ -1,0 +1,28 @@
+{
+  "name": "quantum-integrity-bio-learning",
+  "version": "1.0.0",
+  "description": "Bio-inspired quantum intelligence learning module with 3.5 billion years of plant evolution patterns",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test/runner.js",
+    "lint": "echo 'Linting complete - no linter configured'",
+    "start": "node examples/demo.js"
+  },
+  "keywords": [
+    "quantum",
+    "bio-inspired",
+    "artificial-intelligence",
+    "plant-intelligence",
+    "adaptive-learning",
+    "network-intelligence",
+    "resistance-growth",
+    "symbiotic-evolution"
+  ],
+  "author": "Quantum Integrity Project",
+  "license": "MIT",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "devDependencies": {},
+  "dependencies": {}
+}
