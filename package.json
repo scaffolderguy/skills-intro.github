@@ -1,0 +1,34 @@
+{
+  "name": "skills-intro.github",
+  "version": "1.0.0",
+  "description": "Diamond Kernel - Codon Interpreter System for Symbolic Execution",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "ts-node src/examples.ts",
+    "start": "node dist/examples.js",
+    "clean": "rm -rf dist",
+    "test": "echo \"No tests specified yet\" && exit 0"
+  },
+  "keywords": [
+    "codon",
+    "interpreter",
+    "symbolic-execution",
+    "agents",
+    "diamond-kernel"
+  ],
+  "author": "Diamond Kernel Contributors",
+  "license": "MIT",
+  "files": [
+    "dist/**/*",
+    "src/**/*",
+    "README.md",
+    "LICENSE"
+  ],
+  "devDependencies": {
+    "@types/node": "^24.5.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.2"
+  }
+}
