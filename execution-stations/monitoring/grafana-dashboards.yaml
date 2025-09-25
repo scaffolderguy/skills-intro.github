@@ -1,0 +1,611 @@
+# Execution Stations Monitoring Configuration
+# Grafana dashboard configurations and Prometheus rules
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: execution-stations-dashboards
+  namespace: monitoring
+  labels:
+    app.kubernetes.io/name: execution-stations
+    app.kubernetes.io/component: monitoring
+    grafana_dashboard: "1"
+data:
+  stations-overview.json: |
+    {
+      "annotations": {
+        "list": [
+          {
+            "builtIn": 1,
+            "datasource": {
+              "type": "grafana",
+              "uid": "-- Grafana --"
+            },
+            "enable": true,
+            "hide": true,
+            "iconColor": "rgba(0, 211, 255, 1)",
+            "name": "Annotations & Alerts",
+            "type": "dashboard"
+          }
+        ]
+      },
+      "editable": true,
+      "fiscalYearStartMonth": 0,
+      "graphTooltip": 0,
+      "id": null,
+      "links": [],
+      "liveNow": false,
+      "panels": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 0,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "vis": false
+                },
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "auto",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "percent"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 0
+          },
+          "id": 1,
+          "options": {
+            "legend": {
+              "calcs": [],
+              "displayMode": "list",
+              "placement": "bottom"
+            },
+            "tooltip": {
+              "mode": "single",
+              "sort": "none"
+            }
+          },
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
+              "expr": "rate(container_cpu_usage_seconds_total{namespace=~\"execution-stations-.*\",container!=\"POD\"}[5m]) * 100",
+              "interval": "",
+              "legendFormat": "{{pod}} - {{container}}",
+              "refId": "A"
+            }
+          ],
+          "title": "CPU Usage by Station",
+          "type": "timeseries"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 0,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "vis": false
+                },
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "auto",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "bytes"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 12,
+            "y": 0
+          },
+          "id": 2,
+          "options": {
+            "legend": {
+              "calcs": [],
+              "displayMode": "list",
+              "placement": "bottom"
+            },
+            "tooltip": {
+              "mode": "single",
+              "sort": "none"
+            }
+          },
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
+              "expr": "container_memory_usage_bytes{namespace=~\"execution-stations-.*\",container!=\"POD\"}",
+              "interval": "",
+              "legendFormat": "{{pod}} - {{container}}",
+              "refId": "A"
+            }
+          ],
+          "title": "Memory Usage by Station",
+          "type": "timeseries"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 6,
+            "x": 0,
+            "y": 8
+          },
+          "id": 3,
+          "options": {
+            "orientation": "auto",
+            "reduceOptions": {
+              "values": false,
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": ""
+            },
+            "showThresholdLabels": false,
+            "showThresholdMarkers": true
+          },
+          "pluginVersion": "9.0.0",
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
+              "expr": "count(up{job=~\".*execution-station.*\"} == 1)",
+              "interval": "",
+              "legendFormat": "",
+              "refId": "A"
+            }
+          ],
+          "title": "Active Stations",
+          "type": "gauge"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "yellow",
+                    "value": 10
+                  },
+                  {
+                    "color": "red",
+                    "value": 30
+                  }
+                ]
+              },
+              "unit": "s"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 6,
+            "x": 6,
+            "y": 8
+          },
+          "id": 4,
+          "options": {
+            "orientation": "auto",
+            "reduceOptions": {
+              "values": false,
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": ""
+            },
+            "showThresholdLabels": false,
+            "showThresholdMarkers": true
+          },
+          "pluginVersion": "9.0.0",
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
+              "expr": "avg(station_boot_time_seconds)",
+              "interval": "",
+              "legendFormat": "",
+              "refId": "A"
+            }
+          ],
+          "title": "Average Boot Time",
+          "type": "gauge"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "mappings": [],
+              "max": 1,
+              "min": 0,
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "red",
+                    "value": null
+                  },
+                  {
+                    "color": "yellow",
+                    "value": 0.8
+                  },
+                  {
+                    "color": "green",
+                    "value": 0.9
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 6,
+            "x": 12,
+            "y": 8
+          },
+          "id": 5,
+          "options": {
+            "orientation": "auto",
+            "reduceOptions": {
+              "values": false,
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": ""
+            },
+            "showThresholdLabels": false,
+            "showThresholdMarkers": true
+          },
+          "pluginVersion": "9.0.0",
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
+              "expr": "avg(cognitive_adaptation_score)",
+              "interval": "",
+              "legendFormat": "",
+              "refId": "A"
+            }
+          ],
+          "title": "Cognitive Adaptation Score",
+          "type": "gauge"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "yellow",
+                    "value": 5
+                  },
+                  {
+                    "color": "red",
+                    "value": 10
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 6,
+            "x": 18,
+            "y": 8
+          },
+          "id": 6,
+          "options": {
+            "orientation": "auto",
+            "reduceOptions": {
+              "values": false,
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": ""
+            },
+            "showThresholdLabels": false,
+            "showThresholdMarkers": true
+          },
+          "pluginVersion": "9.0.0",
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
+              "expr": "sum(rate(user_friction_events_total[5m]))",
+              "interval": "",
+              "legendFormat": "",
+              "refId": "A"
+            }
+          ],
+          "title": "User Friction Events/sec",
+          "type": "gauge"
+        }
+      ],
+      "refresh": "30s",
+      "schemaVersion": 36,
+      "style": "dark",
+      "tags": [
+        "execution-stations",
+        "overview"
+      ],
+      "templating": {
+        "list": []
+      },
+      "time": {
+        "from": "now-1h",
+        "to": "now"
+      },
+      "timepicker": {},
+      "timezone": "",
+      "title": "Execution Stations Overview",
+      "uid": "execution-stations-overview",
+      "version": 1,
+      "weekStart": ""
+    }
+
+---
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: execution-stations-rules
+  namespace: monitoring
+  labels:
+    app.kubernetes.io/name: execution-stations
+    app.kubernetes.io/component: monitoring
+    prometheus: kube-prometheus
+    role: alert-rules
+spec:
+  groups:
+  - name: execution-stations.rules
+    rules:
+    - alert: ExecutionStationDown
+      expr: up{job=~".*execution-station.*"} == 0
+      for: 5m
+      labels:
+        severity: critical
+        service: execution-stations
+      annotations:
+        summary: "Execution station {{ $labels.instance }} is down"
+        description: "Execution station {{ $labels.instance }} has been down for more than 5 minutes."
+    
+    - alert: ExecutionStationHighCPU
+      expr: rate(container_cpu_usage_seconds_total{namespace=~"execution-stations-.*"}[5m]) * 100 > 80
+      for: 10m
+      labels:
+        severity: warning
+        service: execution-stations
+      annotations:
+        summary: "High CPU usage in execution station {{ $labels.pod }}"
+        description: "CPU usage is above 80% for {{ $labels.pod }} for more than 10 minutes."
+    
+    - alert: ExecutionStationHighMemory
+      expr: (container_memory_usage_bytes{namespace=~"execution-stations-.*"} / container_spec_memory_limit_bytes{namespace=~"execution-stations-.*"}) * 100 > 85
+      for: 10m
+      labels:
+        severity: warning
+        service: execution-stations
+      annotations:
+        summary: "High memory usage in execution station {{ $labels.pod }}"
+        description: "Memory usage is above 85% for {{ $labels.pod }} for more than 10 minutes."
+    
+    - alert: ExecutionStationBootTimeSlow
+      expr: station_boot_time_seconds > 60
+      for: 1m
+      labels:
+        severity: warning
+        service: execution-stations
+      annotations:
+        summary: "Slow boot time for execution station {{ $labels.instance }}"
+        description: "Boot time is {{ $value }}s, which is above the 60s threshold."
+    
+    - alert: UserFrictionHigh
+      expr: rate(user_friction_events_total[5m]) > 0.1
+      for: 5m
+      labels:
+        severity: warning
+        service: execution-stations
+      annotations:
+        summary: "High user friction detected"
+        description: "User friction rate is {{ $value }} events/second for station {{ $labels.instance }}."
+    
+    - alert: CognitiveAdaptationLow
+      expr: cognitive_adaptation_score < 0.7
+      for: 15m
+      labels:
+        severity: warning
+        service: execution-stations
+      annotations:
+        summary: "Low cognitive adaptation score"
+        description: "Cognitive adaptation score is {{ $value }} for station {{ $labels.instance }}, indicating poor user experience."
+    
+    - alert: ResourcePredictionInaccurate
+      expr: abs(resource_prediction_accuracy - 1) > 0.3
+      for: 30m
+      labels:
+        severity: info
+        service: execution-stations
+      annotations:
+        summary: "Resource prediction accuracy is low"
+        description: "Resource prediction accuracy is {{ $value }} for station {{ $labels.instance }}, consider retraining the model."
+
+---
+# ServiceMonitor for execution stations
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: execution-stations-metrics
+  namespace: monitoring
+  labels:
+    app.kubernetes.io/name: execution-stations
+    app.kubernetes.io/component: monitoring
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/component: execution-station
+  namespaceSelector:
+    matchNames:
+    - execution-stations-dev
+    - execution-stations-staging
+    - execution-stations-prod
+  endpoints:
+  - port: metrics
+    interval: 30s
+    path: /metrics
+    honorLabels: true
