@@ -1,44 +1,80 @@
 <!--
   <<< Author notes: Step 3 >>>
-  Just a historic note: the previous version of this step forced the learner
-  to write a pull request description,
-  checked that `main` was the receiving branch,
-  and that the file was named correctly.
+  Make sure users understand the concept of a pull request.
+  Emphasize that they are creating a branch-to-branch merge proposal.
+  Explain how to complete a pull request merge.
 -->
 
-## Step 3: Open a pull request
+## Step 3: Recalibrate Diagnosis & Treatment ⚙️
 
-_Nice work making that commit! :sparkles:_
+_You created guideline validation templates! :tada:_
 
-Now that you have made a change to the project and created a commit, it’s time to share your proposed change through a pull request!
+This step focuses on using AI to refine existing diagnoses and treatment plans based on comprehensive patient data analysis.
 
-**What is a pull request?**: Collaboration happens on a _[pull request](https://docs.github.com/en/get-started/quickstart/github-glossary#pull-request)_. The pull request shows the changes in your branch to other people and allows people to accept, reject, or suggest additional changes to your branch. In a side by side comparison, this pull request is going to keep the changes you just made on your branch and propose applying them to the `main` project branch. For more information about pull requests, see "[About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)".
+**What is diagnostic recalibration?** It's the process of using AI to systematically review and potentially challenge existing diagnoses by analyzing all available patient data holistically.
 
-### :keyboard: Activity: Create a pull request
+**Key Applications:**
+- **Differential Diagnosis Generation**: AI suggests alternative diagnoses based on symptoms and lab results
+- **Diagnostic Confidence Assessment**: Evaluate strength of current diagnostic decisions
+- **Treatment Optimization**: Refine therapy based on comprehensive data analysis
+- **Clinical Decision Support**: Provide evidence-based diagnostic reasoning
 
-You may have noticed after your commit that a message displayed indicating your recent push to your branch and providing a button that says **Compare & pull request**.
+**Important Safety Note:** AI provides diagnostic support, not final diagnoses. All AI suggestions require clinical validation and human oversight.
 
-![screenshot of message and button](/images/compare-and-pull-request.png)
+### :keyboard: Activity: Create a diagnostic recalibration workflow
 
-To create a pull request automatically, click **Compare & pull request**, and then skip to step 6 below. If you don't click the button, the instructions below walk you through manually setting up the pull request.
+1. Navigate to the **Pull requests** tab in your repository.
 
-1. Click on the **Pull requests** tab in the header menu of your repository.
 2. Click **New pull request**.
+
 3. In the **base:** dropdown, make sure **main** is selected.
-4. Select the **compare:** dropdown, and click `my-first-branch`.
 
-   ![screenshot showing both branch selections](/images/pull-request-branches.png)
+4. In the **compare:** dropdown, select `medical-history-analysis`.
 
-5. Click **Create pull request**.
-6. Enter a title for your pull request. By default, the title will automatically be the name of your branch. For this exercise, let's edit the field to say `Add my first file`.
-7. The next field helps you provide a description of the changes you made. Here, you can add a description of what you’ve accomplished so far. As a reminder, you have: created a new branch, created a file, and made a commit.
+5. Add a title for your pull request: `AI Clinical Insight Training Materials`.
 
-   ![screenshot showing pull request](/images/Pull-request-description.png)
+6. In the description box, add:
+   ```markdown
+   ## Diagnostic Recalibration Workflow
 
-8. Click **Create pull request**. You will automatically be navigated to your new pull request.
-9. Wait about 20 seconds then refresh this page (the one you're following instructions from). [GitHub Actions](https://docs.github.com/en/actions) will automatically update to the next step.
+   ### Case Study Template
+   - **Current Diagnosis**: [Existing diagnosis]
+   - **Patient Presentation**: [Key symptoms and timeline]
+   - **Laboratory Results**: [Relevant lab values and trends]
+   - **Medical History**: [Pertinent past medical history]
+   - **Current Treatment Response**: [How patient is responding]
 
-> [!NOTE]
-> You may see evidence of GitHub Actions running on the tab with the pull request opened! The image below shows a line you might see on your pull request after the Action finishes running.
-> 
-> ![screenshot of an example of an actions line](/images/Actions-to-step-4.png)
+   ### AI Analysis Prompt
+   ```
+   "Given this patient's symptoms, lab results, and history:
+   - Current diagnosis: [CURRENT DIAGNOSIS]
+   - Symptoms: [LIST KEY SYMPTOMS]
+   - Labs: [KEY LABORATORY VALUES]
+   - History: [RELEVANT MEDICAL HISTORY]
+   - Treatment response: [CURRENT RESPONSE TO TREATMENT]
+
+   Is the current diagnosis still the most accurate? Are there alternative 
+   diagnoses or treatments worth considering?"
+   ```
+
+   ### Review Protocol
+   1. **AI Analysis**: Generate differential diagnoses and treatment options
+   2. **Clinical Review**: Healthcare team evaluates AI suggestions
+   3. **Evidence Check**: Validate recommendations against current literature
+   4. **Patient Discussion**: Consider patient preferences and contraindications
+   5. **Implementation**: Modify care plan if appropriate
+   ```
+
+7. Click **Create pull request**.
+
+8. Wait about 20 seconds then refresh this page. The training will advance to Step 4.
+
+<footer>
+
+---
+
+Get help: [Post in our discussion board](https://github.com/orgs/skills/discussions/categories/ai-clinical-insight) &bull; [Review the GitHub status page](https://www.githubstatus.com/)
+
+&copy; 2024 GitHub &bull; [Code of Conduct](https://www.contributor-covenant.org/version/2/1/code_of_conduct/code_of_conduct.md) &bull; [MIT License](https://gh.io/mit)
+
+</footer>

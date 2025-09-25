@@ -4,40 +4,76 @@
   Define terms and link to docs.github.com.
 -->
 
-## Step 2: Commit a file
+## Step 2: Cross-Check with Medical Standards 📚
 
-_You created a branch! :tada:_
+_You created a medical analysis branch! :tada:_
 
-Creating a branch allows you to edit your project without changing the `main` branch. Now that you have a branch, it’s time to create a file and make your first commit!
+Now you'll learn how to use AI to validate treatment plans against current evidence-based guidelines. This ensures your clinical decisions align with the latest medical standards.
 
-**What is a commit?**: A _[commit](https://docs.github.com/pull-requests/committing-changes-to-your-project/creating-and-editing-commits/about-commits)_ is a set of changes to the files and folders in your project. A commit exists in a branch. For more information, see "[About commits](https://docs.github.com/en/pull-requests/committing-changes-to-your-project/creating-and-editing-commits/about-commits)".
+**What is guideline cross-checking?** It's the process of comparing current treatment plans with up-to-date clinical guidelines from organizations like ADA (American Diabetes Association), ACC/AHA (Cardiology), NICE (UK), CDC, or WHO.
 
-### :keyboard: Activity: Your first commit
+**Key Benefits:**
+- **Evidence-Based Care**: Ensures treatments follow current best practices
+- **Quality Improvement**: Identifies outdated or suboptimal treatments
+- **Risk Mitigation**: Reduces medical errors and improves outcomes
+- **Continuous Learning**: Keeps practitioners updated with evolving standards
 
-The following steps will guide you through the process of committing a change on GitHub. A commit records changes in renaming, changing content within, creating a new file, and any other changes made to your project. For this exercise, committing a change requires first adding a new file to your new branch.
+### :keyboard: Activity: Create a guideline validation template
 
-> [!NOTE]
-> `.md` is a file extension that creates a Markdown file. You can learn more about Markdown by visiting "[Basic writing and formatting syntax](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)" in our docs or by taking the "[Communicating using Markdown](https://github.com/skills/communicate-using-markdown)" Skills course.
-
-1. On the **< > Code** tab in the header menu of your repository, make sure you're on your new branch `my-first-branch`.
+1. On the **Code** tab in the header menu of your repository, make sure you're on your new branch `medical-history-analysis`.
 
 2. Select the **Add file** drop-down and click **Create new file**.
 
-   ![create new file option](/images/create-new-file.png)
+3. In the **Name your file...** field, enter `GUIDELINE-TEMPLATE.md`.
 
-3. In the **Name your file...** field, enter `PROFILE.md`.
+4. In the **Enter file contents here** area, copy the following content:
 
-4. In the **Enter file contents here** area, copy the following content to your file:
+   ```markdown
+   # Clinical Guideline Validation Template
 
+   ## Patient Information (Anonymized)
+   - **Condition**: [Primary diagnosis]
+   - **Current Treatment**: [Medications and dosages]
+   - **Key Labs/Vitals**: [Relevant values]
+   - **Comorbidities**: [Other conditions]  
+   - **Guidelines Reference**: [ADA 2024, ACC/AHA, etc.]
+
+   ## AI Prompt Template
    ```
-   Welcome to my GitHub profile!
+   "Based on this treatment plan for a patient with [CONDITION]:
+   - Current: [LIST CURRENT MEDICATIONS/TREATMENTS]
+   - Recent labs: [KEY VALUES]
+   - Comorbidities: [OTHER CONDITIONS]
+   
+   Are there any updates or recommendations from current [GUIDELINE ORGANIZATION YEAR] 
+   guidelines that should be considered?"
    ```
 
-   ![profile.md file screenshot](/images/my-profile-file.png)
+   ## Expected Outcomes
+   - Treatment optimization recommendations
+   - Identification of newer therapeutic options
+   - Risk factor management suggestions
+   - Monitoring protocol updates
 
-5. Click **Commit changes...** in the upper right corner above the contents box. For commits, you can enter a short commit message that describes what changes you made. This message helps others know what's included in your commit. GitHub offers a simple default message, but let's change it slightly for practice. First, enter `Add PROFILE.md` in the first text-entry field titled "Commit message".
+   ## Safety Checklist
+   - [ ] Patient information anonymized
+   - [ ] Current guidelines referenced
+   - [ ] AI suggestions require clinical validation
+   - [ ] Team review recommended for significant changes
+   ```
 
-   ![screenshot of adding a new file with a commit message](/images/commit-full-screen.png)
+5. Click **Commit changes...** and enter the commit message: `Add clinical guideline validation template`.
 
-6. In this lesson, we'll ignore the other fields and click **Commit changes**.
-7. Wait about 20 seconds then refresh this page (the one you're following instructions from). [GitHub Actions](https://docs.github.com/en/actions) will automatically update to the next step.
+6. Click **Commit changes** to complete this step.
+
+7. Wait about 20 seconds then refresh this page. The training will advance to Step 3.
+
+<footer>
+
+---
+
+Get help: [Post in our discussion board](https://github.com/orgs/skills/discussions/categories/ai-clinical-insight) &bull; [Review the GitHub status page](https://www.githubstatus.com/)
+
+&copy; 2024 GitHub &bull; [Code of Conduct](https://www.contributor-covenant.org/version/2/1/code_of_conduct/code_of_conduct.md) &bull; [MIT License](https://gh.io/mit)
+
+</footer>
