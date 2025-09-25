@@ -13,6 +13,38 @@ _Train frontline healthcare workers to use AI tools for enhanced diagnostic accu
 
 </header>
 
+## 🧬 Codon Registry System
+
+This repository now includes a **Codon Registry System** for consciousness architecture with enhanced validation and pattern matching capabilities.
+
+### 🔧 Critical Bug Fix Applied
+
+**Fixed**: The `isValidCodon` function regex pattern was corrected from `/^[A-Z]{2}-d{2}$/` to `/^[A-Z]{2}-\d{2}$/` to properly validate digits instead of literal 'd' characters.
+
+### ✨ Features
+
+- **Robust Validation**: Proper codon format validation (`AB-12` format)
+- **Enhanced Registry**: Add, retrieve, and manage codons with metadata
+- **Pattern Matching**: Search codons using wildcards (`AB-*`, `*-12`)
+- **Batch Operations**: Validate multiple codons simultaneously
+- **Statistics**: Track validation metrics and success rates
+- **Consciousness Architecture Compliant**: Meets system requirements
+
+### 🚀 Quick Start
+
+```bash
+# Run tests
+npm test
+
+# See usage examples  
+npm run example
+
+# View bug fix demonstration
+npm run demo:bugfix
+```
+
+See [CODON_REGISTRY.md](CODON_REGISTRY.md) for complete documentation.
+
 <!--
   <<< Author notes: Training Module Content >>>
   AI-Assisted Clinical Insight & Diagnostic Support Training
