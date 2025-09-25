@@ -1,0 +1,400 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Living Log Entry",
+  "description": "Schema for living histories - emotional and contextual logging that captures the complete experience",
+  "type": "object",
+  "required": [
+    "id",
+    "timestamp",
+    "actionMetadata",
+    "intentSnapshot",
+    "environmentalContext",
+    "emotionalCues",
+    "decisionRationale",
+    "outcomeReflection"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for this log entry",
+      "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp when the action occurred"
+    },
+    "actionMetadata": {
+      "type": "object",
+      "description": "What was done, by whom, and when",
+      "required": ["action", "actor", "duration"],
+      "properties": {
+        "action": {
+          "type": "string",
+          "description": "The specific action that was performed"
+        },
+        "actor": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": ["human", "ai", "system"]
+            },
+            "identifier": {
+              "type": "string",
+              "description": "Username, system name, or AI agent identifier"
+            },
+            "experience_level": {
+              "type": "string",
+              "enum": ["beginner", "intermediate", "advanced", "expert"]
+            }
+          }
+        },
+        "duration": {
+          "type": "number",
+          "description": "Time taken to complete the action in milliseconds"
+        },
+        "attempts": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Number of attempts made to complete this action"
+        }
+      }
+    },
+    "intentSnapshot": {
+      "type": "object",
+      "description": "What the user was trying to achieve",
+      "required": ["primary_goal", "context"],
+      "properties": {
+        "primary_goal": {
+          "type": "string",
+          "description": "The main objective the user was working towards"
+        },
+        "secondary_goals": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Additional objectives or considerations"
+        },
+        "context": {
+          "type": "string",
+          "description": "The broader context or situation that led to this action"
+        },
+        "urgency_level": {
+          "type": "string",
+          "enum": ["low", "medium", "high", "critical"]
+        }
+      }
+    },
+    "environmentalContext": {
+      "type": "object",
+      "description": "System state, network conditions, external variables",
+      "properties": {
+        "system_state": {
+          "type": "object",
+          "properties": {
+            "cpu_usage": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 100
+            },
+            "memory_usage": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 100
+            },
+            "active_processes": {
+              "type": "integer"
+            }
+          }
+        },
+        "network_conditions": {
+          "type": "object",
+          "properties": {
+            "connection_type": {
+              "type": "string",
+              "enum": ["wifi", "ethernet", "cellular", "offline"]
+            },
+            "latency": {
+              "type": "number",
+              "description": "Network latency in milliseconds"
+            },
+            "bandwidth": {
+              "type": "number",
+              "description": "Available bandwidth in Mbps"
+            }
+          }
+        },
+        "external_variables": {
+          "type": "object",
+          "properties": {
+            "time_of_day": {
+              "type": "string"
+            },
+            "day_of_week": {
+              "type": "string"
+            },
+            "concurrent_users": {
+              "type": "integer"
+            },
+            "system_load": {
+              "type": "string",
+              "enum": ["low", "medium", "high", "critical"]
+            }
+          }
+        }
+      }
+    },
+    "emotionalCues": {
+      "type": "object",
+      "description": "Frustration signals, confidence markers, urgency levels",
+      "properties": {
+        "frustration_signals": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "repeated_attempts",
+              "rapid_keystrokes",
+              "backspacing",
+              "help_seeking",
+              "abandonment_signs",
+              "error_accumulation"
+            ]
+          }
+        },
+        "confidence_markers": {
+          "type": "object",
+          "properties": {
+            "level": {
+              "type": "string",
+              "enum": ["very_low", "low", "medium", "high", "very_high"]
+            },
+            "indicators": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": [
+                  "steady_progress",
+                  "deliberate_actions",
+                  "exploration_behavior",
+                  "quick_decision_making",
+                  "help_avoidance"
+                ]
+              }
+            }
+          }
+        },
+        "emotional_state": {
+          "type": "string",
+          "enum": [
+            "curious",
+            "focused",
+            "frustrated",
+            "excited",
+            "confused",
+            "determined",
+            "overwhelmed",
+            "satisfied"
+          ]
+        },
+        "stress_indicators": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "decisionRationale": {
+      "type": "object",
+      "description": "Why this path was chosen over others",
+      "required": ["reasoning", "alternatives_considered"],
+      "properties": {
+        "reasoning": {
+          "type": "string",
+          "description": "The logic or intuition behind the decision"
+        },
+        "alternatives_considered": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "option": {
+                "type": "string"
+              },
+              "pros": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "cons": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "rejection_reason": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "influencing_factors": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "External factors that influenced the decision"
+        },
+        "confidence_in_decision": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Confidence level in the decision made (0-1)"
+        }
+      }
+    },
+    "outcomeReflection": {
+      "type": "object",
+      "description": "What worked, what didn't, and what was learned",
+      "required": ["success_metrics", "lessons_learned"],
+      "properties": {
+        "success_metrics": {
+          "type": "object",
+          "properties": {
+            "goal_achieved": {
+              "type": "boolean"
+            },
+            "efficiency": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1,
+              "description": "How efficiently the goal was achieved (0-1)"
+            },
+            "quality": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1,
+              "description": "Quality of the outcome (0-1)"
+            },
+            "user_satisfaction": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1,
+              "description": "User satisfaction with the outcome (0-1)"
+            }
+          }
+        },
+        "what_worked": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Aspects that contributed to success"
+        },
+        "what_didnt_work": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Aspects that hindered progress or caused issues"
+        },
+        "lessons_learned": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "lesson": {
+                "type": "string"
+              },
+              "applicability": {
+                "type": "string",
+                "enum": ["specific", "general", "universal"]
+              },
+              "confidence": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              }
+            }
+          }
+        },
+        "recommendations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Recommendations for future similar situations"
+        },
+        "emotional_impact": {
+          "type": "object",
+          "properties": {
+            "immediate": {
+              "type": "string",
+              "description": "Immediate emotional response to the outcome"
+            },
+            "long_term": {
+              "type": "string",
+              "description": "Anticipated long-term emotional impact"
+            }
+          }
+        }
+      }
+    },
+    "relationships": {
+      "type": "object",
+      "description": "Connections to other log entries and experiences",
+      "properties": {
+        "parent_entries": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "IDs of log entries that led to this one"
+        },
+        "related_entries": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "IDs of related log entries"
+        },
+        "subsequent_entries": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "IDs of log entries that followed from this one"
+        }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Additional metadata for the log entry",
+      "properties": {
+        "version": {
+          "type": "string",
+          "description": "Schema version used for this entry"
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Tags for categorizing and searching entries"
+        },
+        "privacy_level": {
+          "type": "string",
+          "enum": ["public", "internal", "private", "confidential"]
+        },
+        "retention_policy": {
+          "type": "string",
+          "description": "How long this entry should be retained"
+        }
+      }
+    }
+  }
+}

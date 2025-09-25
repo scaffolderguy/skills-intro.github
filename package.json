@@ -1,0 +1,48 @@
+{
+  "name": "living-histories",
+  "version": "1.0.0",
+  "description": "Emotional and contextual logging system that captures complete experiences with rich behavioral and environmental context",
+  "main": "living-histories/containers/experience-container.js",
+  "scripts": {
+    "test": "node tests/run-tests.js",
+    "demo": "node living-histories/examples/github-skills-integration.js",
+    "validate-schema": "ajv validate -s living-histories/schemas/living-log-schema.json -d living-histories/examples/sample-living-log.json",
+    "start": "node demo/interactive-demo.js"
+  },
+  "keywords": [
+    "logging",
+    "emotional-intelligence",
+    "contextual-data",
+    "learning-analytics",
+    "experience-capture",
+    "behavioral-analysis",
+    "empathy-driven-systems",
+    "github-skills",
+    "educational-technology"
+  ],
+  "author": "Living Histories System",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/scaffolderguy/skills-intro.github.git"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "dependencies": {
+    "ajv": "^8.12.0",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
+  },
+  "directories": {
+    "example": "living-histories/examples",
+    "lib": "living-histories"
+  },
+  "files": [
+    "living-histories/",
+    "README.md",
+    "LICENSE"
+  ]
+}
