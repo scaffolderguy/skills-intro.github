@@ -60,7 +60,7 @@ Our platform works for artists from Lagos to Tokyo, from bedroom producers to ri
 
 **CTO/Co-founder:**
 - ML/AI expertise (NLP, audio processing)
-- Previously scaled ML systems at [Company]
+- Previously scaled ML systems at leading tech company
 - Published research in music information retrieval
 
 **Chief Music Officer:**
@@ -92,33 +92,33 @@ Our platform works for artists from Lagos to Tokyo, from bedroom producers to ri
 
 ## 🏆 Achievements & Milestones
 
-### Planned Milestones:
+### Target Milestones:
 
 **2024 Q4:**
-- [ ] Close Series A funding ($15M)
-- [ ] Launch beta platform (100 artists)
-- [ ] First viral hit generated (5M+ streams)
+- Close Series A funding ($15M)
+- Launch beta platform (100 artists)
+- First viral hit generated (5M+ streams)
 
 **2025 Q1:**
-- [ ] 1,000 active artists
-- [ ] 10 successful cross-cultural collaborations
-- [ ] First data licensing contract signed
+- 1,000 active artists
+- 10 successful cross-cultural collaborations
+- First data licensing contract signed
 
 **2025 Q2:**
-- [ ] 10,000 active artists
-- [ ] Launch mobile apps (iOS + Android)
-- [ ] Reach $1M monthly recurring revenue
+- 10,000 active artists
+- Launch mobile apps (iOS + Android)
+- Reach $1M monthly recurring revenue
 
 **2025 Q4:**
-- [ ] 50,000 active artists
-- [ ] 100 viral hits generated on platform
-- [ ] Reach $5M monthly recurring revenue
+- 50,000 active artists
+- 100 viral hits generated on platform
+- Reach $5M monthly recurring revenue
 
 **2026:**
-- [ ] 500,000 active artists
-- [ ] Series B funding
-- [ ] Expand to 75+ languages
-- [ ] Launch DAW plugin integrations
+- 500,000 active artists
+- Series B funding
+- Expand to 75+ languages
+- Launch DAW plugin integrations
 
 ---
 

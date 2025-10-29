@@ -44,14 +44,14 @@ Foreign Hit Translator is building the **protocol for global music transmission*
 **Secondary Market: Music Industry Intelligence**
 - Labels, streaming platforms, forecasters
 - Predictive analytics market: $30B+
-- Early hit detection worth: $100M+ annually (our estimate)
+- Early hit detection worth: $100M+ annually (based on label A&R spending analysis)
 - Cross-cultural trend data: High value, underserved
 
 **Tertiary Market: Brand Partnerships**
 - Brands seeking emerging music talent
 - Music licensing for advertising
 - Cultural trend forecasting
-- Market: $10B+ annually
+- Market: $10B+ annually (based on music licensing industry analysis)
 
 ### Serviceable Addressable Market (SAM)
 
@@ -128,6 +128,8 @@ Foreign Hit Translator is building the **protocol for global music transmission*
 - Year 1: $500K average per successful collab × 100 collabs × 4% = $2M
 - Year 2: $1M average × 1,000 collabs × 4% = $40M
 - Year 3: $2M average × 5,000 collabs × 4% = $400M
+
+*Note: Collaboration value increases as platform enables higher-tier artists and more successful outcomes. Year 3 assumes established track record enabling larger-scale collaborations with proven ROI.*
 
 ---
 
