@@ -35,3 +35,58 @@
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# Python #
+##########
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+venv/
+env/
+ENV/
+
+# Quantum AI specific #
+#######################
+data/
+logs/
+*.qasm
+*.qobj
+quantum_cache/
+lattice_snapshots/
+
+# IDE #
+#######
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Testing #
+###########
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# Documentation #
+#################
+docs/_build/
+site/
