@@ -173,6 +173,11 @@ In addition to clinical applications, this repository now includes comprehensive
 
 #### 📚 Framework Documentation
 
+**Start Here:**
+- **[Quick Start Guide](QUICK-START.md)** - Get started in 15 minutes, learning paths, and navigation guide
+- **[Glossary](GLOSSARY.md)** - Complete reference for terms, concepts, and acronyms
+
+**Core Documentation:**
 - **[Quantum-Classical AI Framework](QUANTUM-CLASSICAL-AI-FRAMEWORK.md)** - Complete architecture overview, core components, and software modules
 - **[Implementation Guide](IMPLEMENTATION-GUIDE.md)** - Detailed technical specifications and implementation guidelines
 - **[Examples and Tutorials](EXAMPLES-AND-TUTORIALS.md)** - Practical examples, step-by-step tutorials, and use cases
